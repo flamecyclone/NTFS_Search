@@ -12,6 +12,7 @@ using _tstring = std::string;
 #endif
 
 #ifndef _DEBUG
+
 #ifdef _UNICODE
 
 #ifdef _WIN64
