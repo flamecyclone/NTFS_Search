@@ -143,6 +143,8 @@ using _tstring = std::wstring;
 using _tstring = std::string;
 #endif
 
+#ifndef _DEBUG
+
 #ifdef _UNICODE
 
 #ifdef _WIN64
@@ -157,6 +159,27 @@ using _tstring = std::string;
 #pragma comment(lib, "../NTFS_Search_lib/lib/NTFS_Search_Lib_x64_A.lib")
 #else
 #pragma comment(lib, "../NTFS_Search_lib/lib/NTFS_Search_Lib_x86_A.lib")
+#endif
+
+#endif
+
+#else
+#ifdef _UNICODE
+
+#ifdef _WIN64
+#pragma comment(lib, "../NTFS_Search_lib/lib/NTFS_Search_Lib_x64_WD.lib")
+#else
+#pragma comment(lib, "../NTFS_Search_lib/lib/NTFS_Search_Lib_x86_WD.lib")
+#endif
+
+#else
+
+#ifdef _WIN64
+#pragma comment(lib, "../NTFS_Search_lib/lib/NTFS_Search_Lib_x64_AD.lib")
+#else
+#pragma comment(lib, "../NTFS_Search_lib/lib/NTFS_Search_Lib_x86_AD.lib")
+#endif
+
 #endif
 
 #endif
