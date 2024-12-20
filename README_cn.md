@@ -1,6 +1,6 @@
 # NTFS 文件搜索库
 
-[英文](README_en.md) | 中文
+[英文](README.md) | 中文
 
 ## 特性
 

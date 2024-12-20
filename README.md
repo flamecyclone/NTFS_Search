@@ -1,6 +1,6 @@
 # NTFS File Search Library
 
-英文 | [中文](README_en.md)
+英文 | [中文](README_cn.md)
 
 
 
