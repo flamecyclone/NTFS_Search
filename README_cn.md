@@ -1,29 +1,27 @@
-# NTFS File Search Library
+# NTFS 文件搜索库
 
-英文 | [中文](README_en.md)
+[英文](README_en.md) | 中文
 
+## 特性
 
-
-## Features
-
-- Quickly scan all files on NTFS formatted drives
-- Real-time quick synchronization of file changes (creation, renaming, deletion)
-- Support for wildcard queries for file names or file paths
-- Automatic file update upon restart, no need to perform a full disk scan again
+- 快速扫描 NTFS 格式驱动器上的所有文件
+- 实时快速同步文件变更(创建, 更名, 删除)
+- 支持通配符查询文件名或文件路径
+- 重启自动更新文件变动, 无需重新进行全盘扫描
 
 
 
-## API Description
+## API描述
 
-- Initialize and specify the drive you are concerned with.
+- 初始化并指定你关注的驱动器
 
   ```C++
   //
-  // @brief: Initialize(Drive Mask)
-  // @param: dwDriveIndexMask     Drive index mask.(位组合: C: 0x01 D: 0x02 E: 0x04...)
-  // @param: strDbPath            Database file path
-  // @param: fRebuildDb           Whether to rebuild the database
-  // @ret:   BOOL                 Whether the operation was successful.
+  // @brief: 初始化(驱动器掩码)
+  // @param: dwDriveIndexMask     驱动器索引掩码(位组合: C: 0x01 D: 0x02 E: 0x04...)
+  // @param: strDbPath            数据库文件路径
+  // @param: fRebuildDb           是否重建数据库
+  // @ret:   BOOL                 操作是否成功
   BOOL NTFS_Search_Initialize_By_Drive_Mask(
       DWORD dwDriveIndexMask, 
       LPCTSTR lpDbPath,
@@ -31,11 +29,11 @@
   );
   
   //
-  // @brief: Initialize(Drive Letter)
-  // @param: strDriveList         Drive list, Such as: "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-  // @param: strDbPath            Database file path
-  // @param: fRebuildDb           Whether to rebuild the database
-  // @ret:   BOOL                 Whether the operation was successful.
+  // @brief: 初始化(驱动器盘符)
+  // @param: strDriveList         驱动器列表, 如: "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+  // @param: strDbPath            数据库文件路径
+  // @param: fRebuildDb           是否重建数据库
+  // @ret:   BOOL                 操作是否成功
   BOOL NTFS_Search_Initialize_By_Drive_Letter(
       LPCTSTR lpDriveList,
       LPCTSTR lpDbPath,
@@ -43,16 +41,16 @@
   );
   ```
 
-- Reset and specify the drive you are concerned with.
+- 重置并指定你关注的驱动器
 
   ```C++
   
   //
-  // @brief: Reset(Drive Mask)
-  // @param: dwDriveIndexMask     Drive index mask.(位组合: C: 0x01 D: 0x02 E: 0x04...)
-  // @param: strDbPath            Database file path
-  // @param: fRebuildDb           Whether to rebuild the database
-  // @ret:   BOOL                 Whether the operation was successful.
+  // @brief: 重置(驱动器掩码)
+  // @param: dwDriveIndexMask     驱动器索引掩码(位组合: C: 0x01 D: 0x02 E: 0x04...)
+  // @param: strDbPath            数据库文件路径
+  // @param: fRebuildDb           是否重建数据库
+  // @ret:   BOOL                 操作是否成功
   NTFSSEARCH_API BOOL NTFS_Search_Reset_By_Drive_Mask(
       DWORD dwDriveIndexMask,
       LPCTSTR lpDbPath,
@@ -60,11 +58,11 @@
   );
   
   //
-  // @brief: Reset(Drive Letter)
-  // @param: strDriveList         Drive list, Such as: "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-  // @param: strDbPath            Database file path
-  // @param: fRebuildDb           Whether to rebuild the database
-  // @ret:   BOOL                 Whether the operation was successful.
+  // @brief: 重置(驱动器盘符)
+  // @param: strDriveList         驱动器列表, 如: "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+  // @param: strDbPath            数据库文件路径
+  // @param: fRebuildDb           是否重建数据库
+  // @ret:   BOOL                 操作是否成功
   NTFSSEARCH_API BOOL NTFS_Search_Reset_By_Drive_Letter(
       LPCTSTR lpDriveList,
       LPCTSTR lpDbPath,
@@ -74,24 +72,24 @@
 
   
 
-- Get the current total number of files.
+- 获取当前文件总数
 
   ```C++
   //
-  // @brief: Get the current total number of files.
-  // @ret:   LONGLONG               Current total number of files
+  // @brief: 获取当前文件总数
+  // @ret:   LONGLONG               当前文件总数
   NTFSSEARCH_API LONGLONG NTFS_Search_GetCount();
   ```
 
-- Search for files, supporting wildcards (* matches 0 or more characters, ? matches 1 character).
+- 查询文件, 支持通配符(*    匹配 0 个或多个字符 ?    匹配 1 个字符)
 
   ```C++
   //
-  // @brief: Query file path.
-  // @param: lpKeyword            Keyword, such as: "C:\*.zip"
-  // @param: cb                   Query callback function (return FALSE to terminate result enumeration).
-  // @param: lpData               Callback function additional parameters
-  // @ret:   BOOL                 Whether the operation was successful.
+  // @brief: 查询文件路径
+  // @param: lpKeyword            关键字, 如: "C:\*.zip"
+  // @param: cb                   查询回调函数(返回FALSE终止结果枚举)
+  // @param: lpData               回调函数附加参数
+  // @ret:   BOOL                 操作是否成功
   NTFSSEARCH_API BOOL NTFS_Search_Query(
       LPCTSTR lpKeyword,
       NtfsSearchCallback cb,
@@ -99,37 +97,37 @@
   );
   ```
 
-- Uninitialize
+- 反初始化
 
   ```C++
   //
-  // @brief: Uninitialize
-  // @ret:   void                 Whether the operation was successful.
+  // @brief: 反初始化
+  // @ret:   void                 操作是否成功
   NTFSSEARCH_API VOID NTFS_Search_Uninitialize();
   ```
 
   
 
-## Performance Description
+## 性能描述
 
-- Good performance
-  - Full disk scan of 770,000 files takes about 13 seconds
-  - Searching for * takes 1.3 seconds
-  - Searching for *.zip takes 0.2 seconds
-
-
-
-- Low memory usage
-  - Memory usage for 770,000 files is only around 100MB
+- 拥有较好的性能
+  - 全盘扫描 77 万文件耗时约 13秒
+  - 搜索 * 耗时 1.3秒
+  - 搜索 *.zip 耗时 0.2秒
 
 
 
-- Database file occupancy
-  - Database storage for 770,000 files occupies over 300MB of disk space
+- 内存占用小
+  - 77 万 文件数内存占用仅 100MB 左右
 
 
 
-## Usage Examples
+- 数据库文件占用
+  - 77 万 文件数据库存储占用 300+ MB 磁盘空间
+
+
+
+## 使用例子
 
 ```c++
 #include <windows.h>
@@ -192,13 +190,13 @@ int _tmain(int argc, LPCTSTR argv[])
     _tstring strDbPath = _T("");
     tmBegin = ::clock();
 
-    // Initialize
+    // 初始化
     NTFS_Search_Initialize_By_Drive_Letter(strDriveList.c_str(), strDbPath.c_str(), false);
     if (0 == NTFS_Search_GetCount())
     {
-        _tprintf(_T("Scan the specified drive: %s\n"), strDriveList.c_str());
+        _tprintf(_T("扫描指定驱动器: %s\n"), strDriveList.c_str());
         NTFS_Search_Reset_By_Drive_Letter(strDriveList.c_str(), strDbPath.c_str(), true);
-        _tprintf(_T("Scanning Time Taken: %dms\n"), tmEnd - tmBegin);
+        _tprintf(_T("扫描耗时: %d毫秒\n"), tmEnd - tmBegin);
     }
 
     tmEnd = ::clock();
@@ -209,13 +207,12 @@ int _tmain(int argc, LPCTSTR argv[])
     {
         char szBuf[MAX_PATH] = { 0 };
 
-        _tprintf(_T("File count: %llu\n"), NTFS_Search_GetCount());
-        _tprintf(_T("Command: \n"));
-        _tprintf(_T("    :r  Rescan, such as: :r\n"));
-        _tprintf(_T("    ::  Rescan the specified drive, such as: ::CDEF\n"));
-        _tprintf(_T("    :q  Quit, such as: :q\n"));
-        _tprintf(_T("Find keyword:
-: "));
+        _tprintf(_T("文件数: %llu\n"), NTFS_Search_GetCount());
+        _tprintf(_T("命令: \n"));
+        _tprintf(_T("    :r  重新扫描, 如: :r\n"));
+        _tprintf(_T("    ::  重新扫描指定驱动器, 如: ::CDEF\n"));
+        _tprintf(_T("    :q  退出, 如: :q\n"));
+        _tprintf(_T("查找关键字: "));
 
         strKey.clear();
         while (strKey.empty())
@@ -227,31 +224,31 @@ int _tmain(int argc, LPCTSTR argv[])
         if (0 == _strnicmp(szBuf, "::", 2))
         {
             strDriveList = strKey.substr(2);
-            _tprintf(_T("Rescan the specified drive: %s\n"), strDriveList.c_str());
+            _tprintf(_T("重新扫描指定驱动器: %s\n"), strDriveList.c_str());
             tmBegin = ::clock();
             NTFS_Search_Reset_By_Drive_Letter(strDriveList.c_str(), strDbPath.c_str(), true);
             tmEnd = ::clock();
-            _tprintf(_T("Total time taken: %dms\n"), tmEnd - tmBegin);
+            _tprintf(_T("总共耗时: %d毫秒\n"), tmEnd - tmBegin);
             continue;
         }
 
         if (0 == _stricmp(szBuf, ":r"))
         {
-            _tprintf(_T("Rescan\n"));
+            _tprintf(_T("重新扫描\n"));
             tmBegin = ::clock();
             NTFS_Search_Reset_By_Drive_Letter(strDriveList.c_str(), strDbPath.c_str(), true);
             tmEnd = ::clock();
-            _tprintf(_T("Total time taken: %dms\n"), tmEnd - tmBegin);
+            _tprintf(_T("总共耗时: %d毫秒\n"), tmEnd - tmBegin);
             continue;
         }
 
         if (0 == _stricmp(szBuf, ":q"))
         {
-            _tprintf(_T("Quit\n"));
+            _tprintf(_T("退出\n"));
             break;
         }
 
-        _tprintf(_T(R"(Searching...)"));
+        _tprintf(_T(R"(查询中...)"));
         _tprintf(_T("\n"));
 
         std::vector<_tstring> fileList;
@@ -278,10 +275,9 @@ int _tmain(int argc, LPCTSTR argv[])
             }
         }
         _tprintf(_T("\n"));
-        _tprintf(_T("Time taken: %gseconds Number of files: %d \n"), (double)((tmEnd - tmBegin)) / 1000.0f, (int)fileList.size());
+        _tprintf(_T("耗时: %g秒 查找结果: %d \n"), (double)((tmEnd - tmBegin)) / 1000.0f, (int)fileList.size());
     }
 
-    // Uninitialize
     NTFS_Search_Uninitialize();
 
     return 0;
