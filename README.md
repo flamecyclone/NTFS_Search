@@ -1,10 +1,16 @@
 # NTFS File Search Library
 
-English | [中文](README_cn.md)
+ [中文 ](README_cn.md) | English
 
 A library for quickly searching files on an NTFS volume.
 
 
+
+![image-20241220164542610](./assets/image-20241220164542610.png)
+
+
+
+![image-20241220164520003](./assets/image-20241220164520003.png)
 
 ## Features
 
@@ -12,6 +18,10 @@ A library for quickly searching files on an NTFS volume.
 - Real-time quick synchronization of file changes (creation, renaming, deletion)
 - Support for wildcard queries for file names or file paths
 - Automatic file update upon restart, no need to perform a full disk scan again
+
+
+
+![image-20241220163023105](./assets/image-20241220163023105.png)
 
 
 
@@ -149,6 +159,9 @@ using _tstring = std::string;
 
 #ifndef _DEBUG
 
+
+#ifndef _DEBUG
+
 #ifdef _UNICODE
 
 #ifdef _WIN64
@@ -215,18 +228,17 @@ int _tmain(int argc, LPCTSTR argv[])
 
     _tstring strDriveList = _T("");
     _tstring strDbPath = _T("");
-    tmBegin = ::clock();
 
     // Initialize
     NTFS_Search_Initialize_By_Drive_Letter(strDriveList.c_str(), strDbPath.c_str(), false);
     if (0 == NTFS_Search_GetCount())
     {
         _tprintf(_T("Scan the specified drive: %s\n"), strDriveList.c_str());
+        tmBegin = ::clock();
         NTFS_Search_Reset_By_Drive_Letter(strDriveList.c_str(), strDbPath.c_str(), true);
+        tmEnd = ::clock();
         _tprintf(_T("Scanning Time Taken: %dms\n"), tmEnd - tmBegin);
     }
-
-    tmEnd = ::clock();
 
     _tstring strKey;
 
@@ -239,10 +251,9 @@ int _tmain(int argc, LPCTSTR argv[])
         _tprintf(_T("    :r  Rescan, such as: :r\n"));
         _tprintf(_T("    ::  Rescan the specified drive, such as: ::CDEF\n"));
         _tprintf(_T("    :q  Quit, such as: :q\n"));
-        _tprintf(_T("Find keyword:
-: "));
+        _tprintf(_T("Find keyword: "));
 
-        strKey.clear();
+            strKey.clear();
         while (strKey.empty())
         {
             gets_s(szBuf, sizeof(szBuf));
@@ -303,7 +314,7 @@ int _tmain(int argc, LPCTSTR argv[])
             }
         }
         _tprintf(_T("\n"));
-        _tprintf(_T("Time taken: %gseconds Number of files: %d \n"), (double)((tmEnd - tmBegin)) / 1000.0f, (int)fileList.size());
+        _tprintf(_T("Time taken: %gs Number of files: %d \n"), (double)((tmEnd - tmBegin)) / 1000.0f, (int)fileList.size());
     }
 
     // Uninitialize

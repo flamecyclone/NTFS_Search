@@ -1,10 +1,12 @@
 # NTFS 文件搜索库
 
-[English](README.md) | 中文
+中文 | [English](README.md)
 
 一个快速搜索NTFS卷文件的库
 
+![image-20241220164721752](./assets/image-20241220164721752.png)
 
+![image-20241220164743397](./assets/image-20241220164743397.png)
 
 ## 特性
 
@@ -147,6 +149,7 @@ using _tstring = std::wstring;
 using _tstring = std::string;
 #endif
 
+
 #ifndef _DEBUG
 
 #ifdef _UNICODE
@@ -215,18 +218,18 @@ int _tmain(int argc, LPCTSTR argv[])
 
     _tstring strDriveList = _T("");
     _tstring strDbPath = _T("");
-    tmBegin = ::clock();
 
     // 初始化
     NTFS_Search_Initialize_By_Drive_Letter(strDriveList.c_str(), strDbPath.c_str(), false);
     if (0 == NTFS_Search_GetCount())
     {
         _tprintf(_T("扫描指定驱动器: %s\n"), strDriveList.c_str());
+        tmBegin = ::clock();
         NTFS_Search_Reset_By_Drive_Letter(strDriveList.c_str(), strDbPath.c_str(), true);
+        tmEnd = ::clock();
         _tprintf(_T("扫描耗时: %d毫秒\n"), tmEnd - tmBegin);
     }
 
-    tmEnd = ::clock();
 
     _tstring strKey;
 
