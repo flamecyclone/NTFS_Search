@@ -6,11 +6,11 @@ A library for quickly searching files on an NTFS volume.
 
 
 
-![image-20241220164542610](./assets/image-20241220164542610.png)
+![image-20241220164542610](assets/image-20241220164542610.png)
 
 
 
-![image-20241220164520003](./assets/image-20241220164520003.png)
+![image-20241220164520003](assets/image-20241220164520003.png)
 
 ## Features
 
