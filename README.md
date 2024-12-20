@@ -20,7 +20,7 @@
   ```C++
   //
   // @brief: Initialize(Drive Mask)
-  // @param: dwDriveIndexMask     Drive index mask.(位组合: C: 0x01 D: 0x02 E: 0x04...)
+  // @param: dwDriveIndexMask     Drive index mask.(Bit combination: C: 0x01 D: 0x02 E: 0x04...)
   // @param: strDbPath            Database file path
   // @param: fRebuildDb           Whether to rebuild the database
   // @ret:   BOOL                 Whether the operation was successful.
@@ -49,7 +49,7 @@
   
   //
   // @brief: Reset(Drive Mask)
-  // @param: dwDriveIndexMask     Drive index mask.(位组合: C: 0x01 D: 0x02 E: 0x04...)
+  // @param: dwDriveIndexMask     Drive index mask.(Bit combination: C: 0x01 D: 0x02 E: 0x04...)
   // @param: strDbPath            Database file path
   // @param: fRebuildDb           Whether to rebuild the database
   // @ret:   BOOL                 Whether the operation was successful.
