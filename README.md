@@ -21,10 +21,6 @@ A library for quickly searching files on an NTFS volume.
 
 
 
-![image-20241220163023105](./assets/image-20241220163023105.png)
-
-
-
 ## API Description
 
 - Initialize and specify the drive you are concerned with.
