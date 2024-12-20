@@ -1,6 +1,8 @@
 # NTFS File Search Library
 
-英文 | [中文](README_cn.md)
+English | [中文](README_cn.md)
+
+A library for quickly searching files on an NTFS volume.
 
 
 

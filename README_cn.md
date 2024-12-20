@@ -1,6 +1,10 @@
 # NTFS 文件搜索库
 
-[英文](README.md) | 中文
+[English](README.md) | 中文
+
+一个快速搜索NTFS卷文件的库
+
+
 
 ## 特性
 
