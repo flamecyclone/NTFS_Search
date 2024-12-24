@@ -75,7 +75,7 @@ int _tmain_en(int argc, LPCTSTR argv[]);
 
 int _tmain(int argc, LPCTSTR argv[])
 {
-    return _tmain_cn(argc, argv);
+    return _tmain_en(argc, argv);
 }
 
 int _tmain_cn(int argc, LPCTSTR argv[])
